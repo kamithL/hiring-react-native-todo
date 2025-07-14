@@ -1,47 +1,43 @@
 ## 🚀 Description
 
-Briefly describe the features you’ve implemented in this PR.  
-Mention any key implementation details, edge cases, or design decisions.
-
-> Example:  
-> - Implemented task creation form  
-> - Added toggle functionality for task completion  
-> - Enabled local persistence using AsyncStorage
+- Built a React Native TODO app (“tasked”) per spec and Figma designs  
+- Scaffolded with Expo + TypeScript  
+- Created a `useTodos` hook backed by AsyncStorage for add/edit/toggle/delete flows  
+- Provided global state via React Context (`TodoContext`)  
+- Split UI into modular components (`TodoInput`, `TodoList`, `TodoItem`) and `HomeScreen`  
+- Matched Figma exactly: “tasked” header, inline add row, solid black unchecked boxes, teal-filled checked boxes, FAB toggles between “+” and “×”  
+- Configured `app.json` to use `assets/base.png` for both app icon and splash screen with black background  
 
 ---
 
 ## 💡 Solution Rationale & User Value
 
-Please take a moment to explain:
-
-- Why you structured the solution the way you did
-- What you were optimizing for (e.g. performance, readability, UX)
-- How this benefits the end user
-
-This helps us understand how you think and make decisions.
-
+- **Maintainability:** Hooks, context, components, screens, and navigation are each in their own folder  
+- **Readability:** Single‐responsibility files make onboarding and reviews straightforward  
+- **UX:** Inline add, long-press edit, clear visual feedback, and smooth `LayoutAnimation` transitions enhance usability  
+- **Performance:** `useCallback` + `FlatList` keep re-renders minimal even as list grows  
 ---
 
 ## 💾 Local Persistence Rationale
 
-Explain which local storage method you used (e.g. AsyncStorage, MMKV, SQLite) and why.  
-Include any trade-offs or reasons behind your choice.
+I chose **AsyncStorage** because it’s zero-config in Expo, cross-platform, and ideal for small datasets like a TODO list.  
+- **Pros:** Simple JSON storage, no native linking required  
+- **Cons:** Not optimal for complex queries or huge data, but suits our needs perfectly  
 
 ---
 
 ## 🧠 Global State (if used)
 
-If you used a global state management solution (e.g. Redux, Zustand), briefly explain:
-
-- Why it was used
-- What value it added over local state
+I used **React Context** (`TodoContext`) to expose the `useTodos` hook application-wide.  
+- Avoids prop‐drilling into nested components  
+- Makes it trivial to add future screens (e.g. filters, stats) without refactoring  
 
 ---
 
 ## 💫 Animations (Bonus, if implemented)
 
-If you added animations using `react-native-reanimated`, please describe them here.  
-Let us know what you animated and why you chose to do so.
+- Leveraged `LayoutAnimation` to animate item insertions, deletions, and edit‐mode transitions for a polished feel  
+
 
 ---
 
@@ -49,35 +45,35 @@ Let us know what you animated and why you chose to do so.
 
 Include a link to a short screen recording (e.g. Loom or MP4) showing the app in use.
 
-> Example:  
-> https://loom.com/share/your-demo-link
+> (https://drive.google.com/file/d/1qXayQgnZZvoWREVSzejyf7n8KvHLT_KT/view?usp=sharing) 
+> *Shows add, edit (long-press), toggle, delete, and persistence after reload.*
 
 ---
 
 ## 🛠️ Setup Instructions (if different from README)
 
-Mention any additional setup steps or environment changes, if applicable.
+No changes beyond the README. To preview custom splash/icon, run a native build or dev client as described.
 
 ---
 
 ## 📌 Known Limitations / Assumptions
 
-List any known bugs, incomplete features, or assumptions made during implementation.
+- No search or filter feature yet  
+- Assumes reliable device storage; doesn’t handle migration or corruption  
 
----
 
 ## ✅ Checklist
 
-- [ ] Tasks can be added
-- [ ] Tasks can be viewed
-- [ ] Tasks can be edited
-- [ ] Tasks can be marked complete/incomplete
-- [ ] Tasks can be deleted
-- [ ] Data is persisted locally on the device
-- [ ] Local storage method explained
-- [ ] (Optional) Global state usage explained
-- [ ] (Optional) Animations added using `react-native-reanimated`
-- [ ] Demo video included
-- [ ] Solution rationale & user value explained
+- [x] Tasks can be added  
+- [x] Tasks can be viewed  
+- [x] Tasks can be edited  
+- [x] Tasks can be marked complete/incomplete  
+- [x] Tasks can be deleted  
+- [x] Data is persisted locally on the device  
+- [x] Local storage method explained  
+- [x] Global state usage explained  
+- [x] Animations added using `LayoutAnimation`  
+- [x] Demo video included  
+- [x] Solution rationale & user value explained  
 
 ---
