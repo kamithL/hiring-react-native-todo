@@ -85,5 +85,10 @@ In `app.json`:
 │       └── HomeScreen.tsx
 └── README.md
 ```
+## 🎥 Demo
+
+Click below to watch a short demo of the app in use:
+
+▶️ [Watch the Demo Video](https://drive.google.com/file/d/1qXayQgnZZvoWREVSzejyf7n8KvHLT_KT/view?usp=sharing)
 
 
